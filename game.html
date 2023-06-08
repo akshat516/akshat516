@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #game-container {
+            margin-top: 200px;
+        }
+
+        #guess-input {
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        #guess-button {
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    <div id="game-container">
+        <p>Guess a number between 1 and 100:</p>
+        <input id="guess-input" type="number" min="1" max="100">
+        <button id="guess-button">Guess</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Generate a random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        const guessInput = document.getElementById('guess-input');
+        const guessButton = document.getElementById('guess-button');
+        const resultText = document.getElementById('result');
+
+        guessButton.addEventListener('click', function() {
+            // Get the player's guess
+            const guess = parseInt(guessInput.value);
+
+            // Check if the guess is correct
+            if (guess === randomNumber) {
+                resultText.textContent = 'Congratulations! You guessed the correct number!';
+            } else if (guess > randomNumber) {
+                resultText.textContent = 'Too high! Try again.';
+            } else {
+                resultText.textContent = 'Too low! Try again.';
+            }
+        });
+    </script>
+</body>
+</html>
